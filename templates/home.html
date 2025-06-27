@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CleanTech: Transforming Waste Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        .hero {
+            background: url('{{ url_for("static", filename="assets/waste_disposal_site.jpg") }}') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            padding: 20px 50px;
+            z-index: 2;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .navbar a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: white;
+            bottom: -5px;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="overlay"></div>
+
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="active">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('predict') }}">Predict</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+    </div>
+
+    <div class="content">
+        <h1>MUNICIPAL WASTE CLASSIFICATION</h1>
+        <h2>Welcome to <span class="bold">municipal waste classification</span></h2>
+        <p>
+            This platform allows you to upload images of waste materials, and our advanced machine learning model will
+            classify them into appropriate categories. Proper waste classification helps in efficient recycling and
+            waste management, making our environment cleaner and more sustainable.
+        </p>
+        <a href="{{ url_for('predict') }}" class="btn">GET STARTED</a>
+    </div>
+</div>
+
+</body>
+</html>

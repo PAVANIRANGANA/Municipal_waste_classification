@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Waste Classification Result</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e6f9e6, #ccf5cc); /* Light green gradient */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar a {
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #1b5e20;
+        }
+
+        .navbar a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #2e7d32;
+        }
+
+        .card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            color: #2e7d32;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 1px 1px #c8e6c9;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #1b5e20;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="active">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+    </div>
+
+    <!-- Classification Card -->
+    <div class="card">
+        <h1>Waste Classification</h1>
+        <br><br>
+        <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded Image">
+        <h2>Prediction: <span style="color: #2e7d32;">{{ result }}</span></h2>
+        <a href="{{ url_for('predict') }}" class="btn-back">Try Another Image</a>
+    </div>
+
+</body>
+</html>
