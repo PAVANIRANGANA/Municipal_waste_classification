@@ -1,4 +1,4 @@
-♻️ CleanTech: Transforming Waste Management with Transfer Learning
+## ♻️ CleanTech: Transforming Waste Management with Transfer Learning
 
 CleanTech is an AI-powered web application designed to classify and manage waste efficiently using image recognition. It leverages **Transfer Learning with VGG16** to predict different types of waste (like plastic, paper, organic, etc.) from uploaded images. Built with Flask, CleanTech provides a simple user interface for users to contribute toward cleaner and smarter waste disposal systems.
 
